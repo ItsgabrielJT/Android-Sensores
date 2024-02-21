@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-parcelize'  // Agregado el plugin kotlin-parcelize
+
+android {
+    compileSdkVersion 33
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    defaultConfig {
+        applicationId "com.projects.enzoftware.metalball"
+        minSdkVersion 19
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    buildTypes {
+        release {
+            // minifyEnabled false  // Puedes eliminar estas líneas si no estás usando ProGuard
+            // proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    namespace 'com.projects.enzoftware.metalball'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.31"  // Eliminada
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.31"  // Actualizada
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    // implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"  // Actualizada
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'com.google.firebase:firebase-firestore:24.0.0'
+}
+apply plugin: 'com.google.gms.google-services'
+// No es necesario aplicar 'kotlin-android-extensions' ya que View Binding lo reemplaza
+
+// task clean(type: Delete) {
+//     delete rootProject.buildDir
+// }
